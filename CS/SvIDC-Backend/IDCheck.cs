@@ -33,4 +33,13 @@ public class IDCheck
     }
     
     // TODO: Convert ID into array, then split: yy, mm, dd, xxx, c
+    // TODO: Luhn algorithm
+
+    public static Boolean LuhnAlgorithm(String ID)
+    {
+        int[] myInts = Array.ConvertAll(ID.Split(), int.Parse);
+        int sum = 0;
+        
+        return true;
+    }
 }
