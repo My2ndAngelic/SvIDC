@@ -1,0 +1,22 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SvIDC-Ava", "SvIDC-Ava\SvIDC-Ava.csproj", "{460A6E7E-F97C-4557-9805-3628BDD7D48C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SvIDC-Backend", "SvIDC-Backend\SvIDC-Backend.csproj", "{197CA03E-E978-464F-A921-820133B0ED3D}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{460A6E7E-F97C-4557-9805-3628BDD7D48C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{460A6E7E-F97C-4557-9805-3628BDD7D48C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{460A6E7E-F97C-4557-9805-3628BDD7D48C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{460A6E7E-F97C-4557-9805-3628BDD7D48C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{197CA03E-E978-464F-A921-820133B0ED3D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{197CA03E-E978-464F-A921-820133B0ED3D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{197CA03E-E978-464F-A921-820133B0ED3D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{197CA03E-E978-464F-A921-820133B0ED3D}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
