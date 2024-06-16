@@ -45,7 +45,7 @@ public class IDCheck
     /// <exception cref="ArgumentException"></exception>
     private static string FixID (string ID) 
     {
-        string leID = Regex.Replace(ID, @"\s", "");
+        string leID = Regex.Replace(ID, @"\s", ""); // Remove all whitespaces, copied from somewhere
         if (!leID.Contains('-'))
             return leID.Length switch
             {
@@ -59,14 +59,21 @@ public class IDCheck
     
     
     // TODO: Luhn algorithm
-    public static int LuhnAlgorithm(string ID)
+    public static int LuhnCheckSumGenerator(string inputString)
     {
-        string leID = ID[..^1];
-        int[] myInts = Array.ConvertAll(leID.Split(), int.Parse);
-        int sum = 0;
+        int[] digits = Array.ConvertAll(inputString[..^1].Split(), int.Parse);
+        int checkDigit = 0;
         
-        return sum;
+        for (int i = digits.Length - 2; i >= 0; --i)
+            checkDigit += ((i & 1) is 0) switch
+            {
+                true  => digits[i] > 4 ? digits[i] * 2 - 9 : digits[i] * 2,
+                false => digits[i]
+            };
+        return (10 - checkDigit % 10) % 10;
     }
+
+    public static bool IsValidCheckDigit(string cleanedID) => int.Parse(cleanedID[^1].ToString()) == LuhnCheckSumGenerator(cleanedID[..^1]);
 
     private static bool IsValidYear(string cleanedID) => YearCheck(ToYear4Digit(int.Parse(cleanedID[..2])));
     private static bool IsValidMonth(string cleanedID) => MonthCheck(int.Parse(cleanedID[2..4]));

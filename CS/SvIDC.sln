@@ -4,6 +4,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SvIDC-Ava", "SvIDC-Ava\SvID
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SvIDC-Backend", "SvIDC-Backend\SvIDC-Backend.csproj", "{197CA03E-E978-464F-A921-820133B0ED3D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SvIDC-Console", "SvIDC-Console\SvIDC-Console.csproj", "{164A0431-6130-4A71-838C-33569EA8D811}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -18,5 +20,9 @@ Global
 		{197CA03E-E978-464F-A921-820133B0ED3D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{197CA03E-E978-464F-A921-820133B0ED3D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{197CA03E-E978-464F-A921-820133B0ED3D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{164A0431-6130-4A71-838C-33569EA8D811}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{164A0431-6130-4A71-838C-33569EA8D811}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{164A0431-6130-4A71-838C-33569EA8D811}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{164A0431-6130-4A71-838C-33569EA8D811}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
