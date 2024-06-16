@@ -4,14 +4,13 @@ namespace SvIDC_Backend;
 
 public class IDCheck
 {
-    public static bool YearCheck(int year) => 1900 <= year && year <= 2100;
+    private static bool YearCheck(int year) => year is >= 1900 and <= 2100;
 
-    public static bool MonthCheck(int month) => 1 <= month && month <= 12;
-
-
+    private static bool MonthCheck(int month) => month is >= 1 and <= 12;
+    
     private static bool IsLeapYear(int year) => year % 4 == 0 && year % 100 == 0 && year % 400 != 0;
 
-    public static bool DayCheck(int year, int month, int day) =>
+    private static bool DayCheck(int year, int month, int day) =>
         month switch
         {
             2 when IsLeapYear(year) => day <= 29,
@@ -50,9 +49,9 @@ public class IDCheck
         if (!leID.Contains('-'))
             return leID.Length switch
             {
-                12 => leID[2..],
+                12 when YearCheck(int.Parse(leID[..4])) => leID[2..], // Check if year has 4 digit, is it between 1900 and 2100
                 10 => leID,
-                _ => throw new ArgumentException("Illegal argument")
+                _ => throw new ArgumentException("ID is not in the correct format or year is not between 1900 or 2100")
             };
         string[] leString = leID.Split("-");
         return string.Join("", leString);
@@ -60,18 +59,16 @@ public class IDCheck
     
     
     // TODO: Luhn algorithm
-    public static bool LuhnAlgorithm(string ID)
+    public static int LuhnAlgorithm(string ID)
     {
-        int[] myInts = Array.ConvertAll(ID.Split(), int.Parse);
+        string leID = ID[..^1];
+        int[] myInts = Array.ConvertAll(leID.Split(), int.Parse);
         int sum = 0;
         
-        return true;
+        return sum;
     }
 
-    private static bool IsValidYear(string cleanedID) => int.Parse(cleanedID[..2]) is >= 0 and <= 99;
-
-    private static bool IsValidMonth(string cleanedID)
-    {
-        throw new NotImplementedException();
-    }
+    private static bool IsValidYear(string cleanedID) => YearCheck(ToYear4Digit(int.Parse(cleanedID[..2])));
+    private static bool IsValidMonth(string cleanedID) => MonthCheck(int.Parse(cleanedID[2..4]));
+    private static bool IsValidDate(string cleanedID) => DayCheck(ToYear4Digit(int.Parse(cleanedID[..2])), int.Parse(cleanedID[2..4]), int.Parse(cleanedID[4..6]));
 }
