@@ -19,18 +19,7 @@ public class IDCheck
             4 or 6 or 9 or 11 => day <= 30,
             _ => false
         };
-
-    private static int ToYear4Digit(int year) =>
-        year switch
-        {
-            >= 1900 and <= 2100 => year,
-            >= 0 and <= 99 => year < new DateTime().Year % 100 ? year + 1900 : year + 2000,
-            _ => throw new ArgumentException("Invalid year.")
-        };
-
-    private static int ToYear2Digit(int year) => year % 100;
-
-    // TODO: Convert ID into array, then split: yy, mm, dd, xxxx
+    
     /// <summary>
     /// Return ID in the form of yymmddxxxx
     /// </summary>
@@ -43,7 +32,7 @@ public class IDCheck
     /// </param>
     /// <returns></returns>
     /// <exception cref="ArgumentException"></exception>
-    private static string FixID (string ID) 
+    public static string FixID (string ID) 
     {
         string leID = Regex.Replace(ID, @"\s", ""); // Remove all whitespaces, copied from somewhere
         if (!leID.Contains('-'))
@@ -75,7 +64,7 @@ public class IDCheck
 
     public static bool IsValidCheckDigit(string cleanedID) => int.Parse(cleanedID[^1].ToString()) == LuhnCheckSumGenerator(cleanedID[..^1]);
 
-    private static bool IsValidYear(string cleanedID) => YearCheck(ToYear4Digit(int.Parse(cleanedID[..2])));
+    private static bool IsValidYear(string cleanedID) => YearCheck(IDConvert.ToYear4Digit(int.Parse(cleanedID[..2])));
     private static bool IsValidMonth(string cleanedID) => MonthCheck(int.Parse(cleanedID[2..4]));
-    private static bool IsValidDate(string cleanedID) => DayCheck(ToYear4Digit(int.Parse(cleanedID[..2])), int.Parse(cleanedID[2..4]), int.Parse(cleanedID[4..6]));
+    private static bool IsValidDate(string cleanedID) => DayCheck(IDConvert.ToYear4Digit(int.Parse(cleanedID[..2])), int.Parse(cleanedID[2..4]), int.Parse(cleanedID[4..6]));
 }
